@@ -1,3 +1,4 @@
+// app/api/generate-slides/route.ts
 import { NextRequest, NextResponse } from "next/server";
 import { generateObject } from 'ai';
 import { groq } from "@ai-sdk/groq";
