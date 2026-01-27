@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Super Agent Powered by Composio",
-  description: "Create professional presentations and chat with your Google Sheets using AI. Powered by Gemini and Composio.",
+  title: "Open Genspark | AI Super Agent",
+  description: "The ultimate AI Super Agent for presentations, document analysis, and task automation. Powered by Groq and Composio.",
 };
 
 export default function RootLayout({
