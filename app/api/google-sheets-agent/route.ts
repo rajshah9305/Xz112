@@ -1,3 +1,4 @@
+// app/api/google-sheets-agent/route.ts
 import { groq } from '@ai-sdk/groq';
 import { generateText } from 'ai';
 import { Composio } from '@composio/core';
@@ -12,13 +13,8 @@ export async function POST(req: Request) {
   try {
     const { message, sheetUrl, conversationHistory, userId } = await req.json();
 
-    // Validate userId is provided
-    if (!userId) {
-      return Response.json(
-        { error: 'Authentication required. Please sign in.' },
-        { status: 401 }
-      );
-    }
+    // Remove authentication check - generate userId if not provided
+    const effectiveUserId = userId || Math.floor(1000000000 + Math.random() * 9000000000).toString();
 
     if (!process.env.GROQ_API_KEY) {
       return Response.json(
@@ -35,7 +31,7 @@ export async function POST(req: Request) {
     }
 
     const tools = await composio.tools.get(
-        userId,
+        effectiveUserId,
         {
             toolkits: ['GOOGLESHEETS']
         }
@@ -55,7 +51,7 @@ export async function POST(req: Request) {
 
 Current Sheet: ${sheetUrl}
 Sheet ID: ${sheetId}
-User ID: ${userId}
+User ID: ${effectiveUserId}
 
 Guidelines:
 - Always use the Google Sheets tools to access real data from the spreadsheet
@@ -81,7 +77,7 @@ ${conversationContext}`;
       response: text, 
       finishReason,
       sheetId,
-      userId 
+      userId: effectiveUserId 
     });
 
   } catch (error) {
