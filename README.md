@@ -33,7 +33,23 @@
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Deployment & Getting Started
+
+### Vercel Deployment Configuration
+The project is pre-configured for Vercel. Use these settings in the Vercel Dashboard:
+- **Framework Preset**: Next.js
+- **Install Command**: `npm install --legacy-peer-deps`
+- **Build Command**: `npm run build`
+
+### Environment Variables
+Ensure these are set in your deployment environment:
+- `GROQ_API_KEY`: Your Groq API key.
+- `COMPOSIO_API_KEY`: Your Composio API key.
+- `NEXT_PUBLIC_APP_URL`: Your deployment URL (e.g., `https://your-app.vercel.app`).
+
+---
+
+## 💻 Local Development
 
 ### Prerequisites
 *   **Node.js 18+**
