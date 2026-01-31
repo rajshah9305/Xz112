@@ -409,8 +409,8 @@ export async function POST(req: NextRequest) {
         }
         
         // Initialize the custom slide generation tool
-        await initializeSlideGenerationTool();
-        await initializePuppeteerTool();
+        const slideTool = await initializeSlideGenerationTool();
+        const puppeteerTool = await initializePuppeteerTool();
         
         // Get comprehensive toolkits based on selected tool or default to all
         let toolkits = ['GOOGLESUPER', 'COMPOSIO_SEARCH'];
@@ -443,10 +443,18 @@ export async function POST(req: NextRequest) {
 
         // Always include slide generation tool - available for all requests
         let allTools = Object.assign({},google_sheet_tools, google_docs_tools, get_google_docs_tools, composio_search_toolkit, composio_toolkit);
-        console.log(allTools);
-        // Always add the slide generation tool
-        const customTools = await composio.tools.get(String(effectiveUserId), {toolkits: [SLIDE_GENERATOR_TOOL]});
-        allTools = Object.assign({}, allTools, customTools);
+
+        // Add custom tools
+        if (slideTool) {
+            // @ts-ignore
+            allTools[SLIDE_GENERATOR_TOOL] = slideTool;
+        }
+        if (puppeteerTool) {
+            // @ts-ignore
+            allTools[PUPPETEER_TOOL] = puppeteerTool;
+        }
+
+        console.log('Tools initialized:', Object.keys(allTools));
         
         let systemPrompt = `You are Super Agent, a helpful and efficient AI assistant powered by Composio. Your main goal is to assist users by using a suite of powerful tools to accomplish tasks.
 
