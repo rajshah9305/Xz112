@@ -77,7 +77,13 @@ Ensure these are set in your deployment environment:
     NEXT_PUBLIC_APP_URL=http://localhost:3000
     ```
 
-4.  **Launch Development Server:**
+4.  **Verify Setup:**
+    Run the verification script to ensure your environment is correctly configured:
+    ```bash
+    node scripts/verify-setup.js
+    ```
+
+5.  **Launch Development Server:**
     ```bash
     npm run dev
     ```
