@@ -256,6 +256,7 @@ async function initializeSlideGenerationTool() {
                     const { content, slideCount, style } = input;
                     
                     const { object } = await generateObject({
+                        // Use Groq model for slide generation
                         model: groq('llama-3.3-70b-versatile'),
                         schema: slideSchema,
                         prompt: `Create a professional presentation with ${slideCount} slides using a ${style} style, based on the following content:
@@ -380,6 +381,14 @@ async function initializePuppeteerTool() {
 
 export async function POST(req: NextRequest) {
     try {
+        if (!process.env.GROQ_API_KEY) {
+            return NextResponse.json({ error: 'Missing GROQ_API_KEY' }, { status: 500 });
+        }
+
+        if (!process.env.COMPOSIO_API_KEY) {
+            return NextResponse.json({ error: 'Missing COMPOSIO_API_KEY' }, { status: 500 });
+        }
+
         const { prompt, selectedTool, conversationHistory, userId, sheetUrl, docUrl } = await req.json();
         
         // Remove authentication check - generate userId if not provided
@@ -501,6 +510,7 @@ Updating google docs means updating the markdown of the document/ deleting all c
         });
 
         const { text, toolCalls, toolResults } = await generateText({
+            // Use Groq model for fast inference
             model: groq('llama-3.3-70b-versatile'),
             system: systemPrompt,
             messages,

@@ -92,6 +92,10 @@ function generateSlideHTML(slide: any, style: string = 'professional') {
 
 export async function POST(req: NextRequest) {
     try {
+        if (!process.env.GROQ_API_KEY) {
+            return NextResponse.json({ error: 'Missing GROQ_API_KEY' }, { status: 500 });
+        }
+
         const { content, style = 'professional', slideCount = 5 } = await req.json();
 
         if (!content) {
@@ -99,6 +103,7 @@ export async function POST(req: NextRequest) {
         }
 
         const { object } = await generateObject({
+            // Use Groq model for slide generation
             model: groq('llama-3.3-70b-versatile'),
             schema: slideSchema,
             prompt: `You will be given text that describes the content for a presentation, structured slide by slide. Your task is to convert this structured text into a valid JSON object that matches the slide schema. Use the provided text to populate the 'title', 'content', and 'bulletPoints' for each slide. Determine the best 'type' for each slide ('title', 'content', or 'bullet') based on the provided structure.
