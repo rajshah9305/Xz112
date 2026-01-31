@@ -129,7 +129,7 @@ export default function PPTCreator({ initialSlides = [], userId }: PPTCreatorPro
               value={topic}
               onChange={(e) => setTopic(e.target.value)}
               placeholder="e.g., Digital Marketing Strategy, Climate Change, AI in Healthcare"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
             />
           </div>
           
@@ -140,7 +140,7 @@ export default function PPTCreator({ initialSlides = [], userId }: PPTCreatorPro
             <select
               value={slideCount}
               onChange={(e) => setSlideCount(Number(e.target.value))}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
             >
               {[3, 5, 7, 10, 15].map(count => (
                 <option key={count} value={count}>{count} slides</option>
@@ -155,7 +155,7 @@ export default function PPTCreator({ initialSlides = [], userId }: PPTCreatorPro
             <select
               value={style}
               onChange={(e) => setStyle(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"
             >
               <option value="professional">Professional</option>
               <option value="creative">Creative</option>
@@ -169,7 +169,7 @@ export default function PPTCreator({ initialSlides = [], userId }: PPTCreatorPro
           <button
             onClick={generateSlides}
             disabled={isGenerating || !topic.trim()}
-            className="flex items-center justify-center px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center justify-center px-6 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isGenerating ? (
               <FiRefreshCw className="animate-spin mr-2" />
@@ -233,25 +233,25 @@ export default function PPTCreator({ initialSlides = [], userId }: PPTCreatorPro
               <div className="bg-white rounded-lg shadow-lg border-2 border-gray-200 max-h-[500px] overflow-y-auto">
                 <div className={`p-8 flex flex-col justify-center ${
                   currentSlide.type === 'title' 
-                    ? 'bg-gradient-to-br from-blue-600 to-purple-600 text-white text-center rounded-lg' 
+                    ? 'bg-gradient-to-br from-orange-600 to-red-600 text-white text-center rounded-lg'
                     : ''
                 }`} style={{ minHeight: '400px' }}>
                   <h2 className={`font-bold mb-6 ${
                     currentSlide.type === 'title' 
                       ? 'text-4xl text-white' 
-                      : 'text-2xl text-blue-600 text-center'
+                      : 'text-2xl text-orange-600 text-center'
                   }`}>
                     {currentSlide.title}
                   </h2>
                   
                   <div className={`text-lg leading-relaxed ${
-                    currentSlide.type === 'title' ? 'text-blue-100' : 'text-gray-700'
+                    currentSlide.type === 'title' ? 'text-orange-100' : 'text-gray-700'
                   }`}>
                     {currentSlide.type === 'bullet' && currentSlide.bulletPoints ? (
                       <ul className="space-y-3 text-left">
                         {currentSlide.bulletPoints.map((point, i) => (
                           <li key={i} className="flex items-start">
-                            <span className="text-blue-500 mr-3 mt-1">•</span>
+                            <span className="text-orange-500 mr-3 mt-1">•</span>
                             <span>{point}</span>
                           </li>
                         ))}

@@ -22,9 +22,9 @@ export default function SlidePreview({ slide, index, isSelected, onClick }: Slid
     'w-full min-h-[96px] max-h-[140px] border-2 rounded-lg p-2 cursor-pointer transition-all duration-200',
     'bg-white shadow-sm hover:shadow-md',
     {
-      'border-blue-500 ring-2 ring-blue-200': isSelected,
+      'border-orange-500 ring-2 ring-orange-200': isSelected,
       'border-gray-200 hover:border-gray-300': !isSelected,
-      'bg-gradient-to-br from-blue-600 to-purple-600 text-white': slide.type === 'title',
+      'bg-gradient-to-br from-orange-600 to-red-600 text-white': slide.type === 'title',
     }
   );
 
@@ -34,13 +34,13 @@ export default function SlidePreview({ slide, index, isSelected, onClick }: Slid
         <div className="h-full flex flex-col justify-center">
           <h3 className={clsx(
             'font-medium mb-1 text-center truncate',
-            slide.type === 'title' ? 'text-sm text-white' : 'text-xs text-blue-700'
+            slide.type === 'title' ? 'text-sm text-white' : 'text-xs text-orange-700'
           )} style={{ lineHeight: '1.1', maxHeight: '2.2em', overflow: 'hidden', textOverflow: 'ellipsis' }}>
             {slide.title}
           </h3>
           <div className={clsx(
             'text-[10px] flex-1 overflow-hidden',
-            slide.type === 'title' ? 'text-blue-100' : 'text-gray-600'
+            slide.type === 'title' ? 'text-orange-100' : 'text-gray-600'
           )} style={{ minHeight: '1em', maxHeight: '2.2em', overflow: 'hidden', textOverflow: 'ellipsis' }}>
             {slide.type === 'bullet' && slide.bulletPoints ? (
               <ul className="list-disc list-inside space-y-0.5">

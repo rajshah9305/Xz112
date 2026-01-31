@@ -108,9 +108,9 @@ export default function SparkPages({ className }: SparkPagesProps) {
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case 'research': return 'bg-blue-100 text-blue-800';
+      case 'research': return 'bg-orange-100 text-orange-800';
       case 'analysis': return 'bg-green-100 text-green-800';
-      case 'report': return 'bg-purple-100 text-purple-800';
+      case 'report': return 'bg-red-100 text-red-800';
       case 'presentation': return 'bg-orange-100 text-orange-800';
       default: return 'bg-gray-100 text-gray-800';
     }
@@ -128,7 +128,7 @@ export default function SparkPages({ className }: SparkPagesProps) {
             </div>
             <button
               onClick={() => setIsCreating(true)}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center space-x-2"
+              className="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition-colors flex items-center space-x-2"
             >
               <FiEdit3 className="w-4 h-4" />
               <span>Create Spark Page</span>
@@ -143,13 +143,13 @@ export default function SparkPages({ className }: SparkPagesProps) {
                 placeholder="Search spark pages..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
               />
             </div>
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
             >
               {categories.map(category => (
                 <option key={category.id} value={category.id}>
@@ -187,7 +187,7 @@ export default function SparkPages({ className }: SparkPagesProps) {
                       e.stopPropagation();
                       handleShare(page);
                     }}
-                    className="p-2 text-gray-400 hover:text-blue-600 transition-colors"
+                    className="p-2 text-gray-400 hover:text-orange-600 transition-colors"
                   >
                     <FiShare2 className="w-4 h-4" />
                   </button>
@@ -254,7 +254,7 @@ export default function SparkPages({ className }: SparkPagesProps) {
             {!searchTerm && (
               <button
                 onClick={() => setIsCreating(true)}
-                className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                className="bg-orange-600 text-white px-4 py-2 rounded-lg hover:bg-orange-700 transition-colors"
               >
                 Create Spark Page
               </button>
@@ -308,7 +308,7 @@ export default function SparkPages({ className }: SparkPagesProps) {
                     {selectedPage.tags.map(tag => (
                       <span
                         key={tag}
-                        className="px-3 py-1 bg-blue-100 text-blue-800 text-sm rounded-full"
+                        className="px-3 py-1 bg-orange-100 text-orange-800 text-sm rounded-full"
                       >
                         {tag}
                       </span>
@@ -317,14 +317,14 @@ export default function SparkPages({ className }: SparkPagesProps) {
                   <div className="flex items-center space-x-2">
                     <button
                       onClick={() => handleShare(selectedPage)}
-                      className="p-2 text-gray-400 hover:text-blue-600 transition-colors"
+                      className="p-2 text-gray-400 hover:text-orange-600 transition-colors"
                     >
                       <FiShare2 className="w-5 h-5" />
                     </button>
                     <button className="p-2 text-gray-400 hover:text-green-600 transition-colors">
                       <FiDownload className="w-5 h-5" />
                     </button>
-                    <button className="p-2 text-gray-400 hover:text-purple-600 transition-colors">
+                    <button className="p-2 text-gray-400 hover:text-red-600 transition-colors">
                       <FiBookmark className="w-5 h-5" />
                     </button>
                   </div>
