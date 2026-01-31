@@ -99,12 +99,12 @@ const MessageBubble = ({ message, activeSlide, setActiveSlide, downloadAsPPT }: 
       className={clsx('flex items-start gap-4 max-w-4xl', message.role === 'user' ? 'justify-end ml-auto' : 'justify-start')}
     >
       {message.role === 'assistant' && (
-        <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+        <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center flex-shrink-0">
           <FiStar className="w-4 h-4 text-white" />
         </div>
       )}
       
-      <GlowCard glowColor={message.role === 'user' ? 'blue' : 'purple'} className="min-w-0 w-auto h-auto !aspect-auto !h-auto !min-h-0 !p-2 !py-2 !px-4 !shadow-none">
+      <GlowCard glowColor={message.role === 'user' ? 'orange' : 'red'} className="min-w-0 w-auto h-auto !aspect-auto !h-auto !min-h-0 !p-2 !py-2 !px-4 !shadow-none">
         {message.role === 'assistant' ? (
           <div className="prose prose-sm max-w-none text-gray-800">
             <ReactMarkdown 
@@ -127,7 +127,7 @@ const MessageBubble = ({ message, activeSlide, setActiveSlide, downloadAsPPT }: 
         {message.hasSlides && message.slideData && message.slideData.length > 0 && (
           <div className="mt-6">
             <h3 className="font-semibold mb-4 text-gray-800 flex items-center gap-2">
-              <svg className="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 4V2a1 1 0 011-1h8a1 1 0 011 1v2m0 0V1a1 1 0 011-1h2a1 1 0 011 1v18a1 1 0 01-1 1h-2a1 1 0 01-1-1V4m0 0H8m8 0v2H8V4" />
               </svg>
               Presentation Preview
@@ -189,7 +189,7 @@ const MessageBubble = ({ message, activeSlide, setActiveSlide, downloadAsPPT }: 
                       key={index}
                       onClick={() => setActiveSlide(index)}
                       className={`w-2 h-2 rounded-full mx-0.5 transition-all duration-200 ${
-                        index === activeSlide ? 'bg-blue-500 w-4' : 'bg-gray-300 hover:bg-gray-400'
+                        index === activeSlide ? 'bg-orange-500 w-4' : 'bg-gray-300 hover:bg-gray-400'
                       }`}
                     />
                   ))}
@@ -218,7 +218,7 @@ const MessageBubble = ({ message, activeSlide, setActiveSlide, downloadAsPPT }: 
                 </button>
                 <button
                   onClick={downloadAsPPT}
-                  className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg hover:from-blue-600 hover:to-blue-700 transition-all duration-200 shadow-sm hover:shadow-md"
+                  className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg hover:from-orange-600 hover:to-orange-700 transition-all duration-200 shadow-sm hover:shadow-md"
                 >
                   <FiDownload className="w-4 h-4" />
                   Download PPT
@@ -560,7 +560,7 @@ export default function SuperAgent({ className, userId }: SuperAgentProps) {
                   animate={{ opacity: 1, y: 0 }}
                   className="flex items-start gap-4 max-w-4xl"
                 >
-                  <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-red-600 rounded-full flex items-center justify-center flex-shrink-0">
                     <FiLoader className="w-4 h-4 text-white animate-spin" />
                   </div>
                   <div className="bg-white p-4 rounded-2xl rounded-bl-lg shadow-sm border border-gray-100">
@@ -610,7 +610,7 @@ export default function SuperAgent({ className, userId }: SuperAgentProps) {
             <div
               className={clsx(
                 "w-2 h-full bg-gray-100 hover:bg-gray-200 cursor-col-resize flex items-center justify-center group border-r border-gray-200 transition-colors",
-                isResizing && "bg-blue-200"
+                isResizing && "bg-orange-200"
               )}
               onMouseDown={handleMouseDown}
             >
@@ -668,7 +668,7 @@ export default function SuperAgent({ className, userId }: SuperAgentProps) {
             <div
               className={clsx(
                 "w-2 h-full bg-gray-100 hover:bg-gray-200 cursor-col-resize flex items-center justify-center group border-r border-gray-200 transition-colors",
-                isResizing && "bg-blue-200"
+                isResizing && "bg-orange-200"
               )}
               onMouseDown={handleMouseDown}
             >
@@ -688,7 +688,7 @@ export default function SuperAgent({ className, userId }: SuperAgentProps) {
                     <FiX className="w-5 h-5" />
                   </button>
                 </div>
-                <div className="flex items-center gap-2 text-sm text-blue-600">
+                <div className="flex items-center gap-2 text-sm text-orange-600">
                   <FiCheck className="w-4 h-4" />
                   <span>Connected to Google Docs</span>
                 </div>

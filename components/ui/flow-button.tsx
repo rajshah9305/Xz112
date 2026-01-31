@@ -13,14 +13,14 @@ export function FlowButton({ text, onClick, className = "" }: FlowButtonProps) {
 
   return (
     <button
-      className={`relative overflow-hidden rounded-full bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-4 text-white font-semibold shadow-lg transition-all duration-300 hover:scale-105 active:scale-95 ${className}`}
+      className={`relative overflow-hidden rounded-full bg-gradient-to-r from-orange-500 to-red-500 px-8 py-4 text-white font-semibold shadow-lg transition-all duration-300 hover:scale-105 active:scale-95 ${className}`}
       onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Animated background */}
       <div
-        className={`absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 transition-all duration-300 ${
+        className={`absolute inset-0 bg-gradient-to-r from-red-500 to-orange-500 transition-all duration-300 ${
           isHovered ? 'opacity-100' : 'opacity-90'
         }`}
       />
@@ -29,7 +29,7 @@ export function FlowButton({ text, onClick, className = "" }: FlowButtonProps) {
       <div
         className={`absolute inset-0 rounded-full transition-all duration-300 ${
           isHovered 
-            ? 'opacity-30 shadow-[0_0_20px_rgba(139,92,246,0.5)]' 
+            ? 'opacity-30 shadow-[0_0_20px_rgba(249,115,22,0.5)]'
             : 'opacity-0'
         }`}
       />

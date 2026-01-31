@@ -11,8 +11,8 @@ interface GlowCardProps {
 }
 
 const glowColorMap = {
-  blue: { base: 220, spread: 200 },
-  purple: { base: 280, spread: 300 },
+  blue: { base: 30, spread: 200 }, // Mapped to orange
+  purple: { base: 0, spread: 200 }, // Mapped to red
   green: { base: 120, spread: 200 },
   red: { base: 0, spread: 200 },
   orange: { base: 30, spread: 200 }
@@ -28,7 +28,7 @@ const sizeMap = {
 const GlowCard: React.FC<GlowCardProps> = ({ 
   children, 
   className = '', 
-  glowColor = 'blue',
+  glowColor = 'orange',
   size = 'md',
   width,
   height,
